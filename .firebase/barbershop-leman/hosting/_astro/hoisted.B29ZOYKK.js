@@ -1,0 +1,1 @@
+import"./hoisted.2daoxv0f.js";const n=document.querySelectorAll('input[name="services"]'),c=document.getElementById("total")||{textContent:"0"};n.forEach(o=>{o.addEventListener("change",()=>{let e=0;n.forEach(t=>{t.checked&&(e+=parseFloat(t.value))}),c.textContent=e.toFixed(2)})});

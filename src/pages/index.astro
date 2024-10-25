@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro';
+
+
+---
+
+
+<Layout title="Barbershop Leman">
+		<section class="flex-row mx-auto items-center max-w-xl drop-shadow-xl lg:w-screen sm:w-screen pt-16 ">
+			<h1 
+			class ="flex items-center mx-4 text-left justify-center font-bold">
+			<div class="text-2xl">
+				Barbershop Leman  
+			</div>
+				<Badge>
+					<a href="/agendar-turno"
+					target="_self"
+					class="flex flex-row text-nowrap items-center">
+					Agendá un turno
+				</a>			
+				</Badge>
+				
+			</h1>
+			<p class="text-md text-justify mx-4 ">
+
+				Un lugar dedicado al cuidado personal y al estilo, donde cada detalle está pensado para que brindarte atención personalizada y de primera calidad!
+			</p>
+		</section>
+		<section class="flex-row mx-auto items-center max-w-xl drop-shadow-xl lg:w-screen sm:w-screen py-16">
+			<h1 
+			class ="flex items-center mx-4 text-left justify-center font-bold">
+			<div class="text-2xl">
+				Los mejores precios    
+			</div>
+				<Badge>
+				<a href="/lista-de-precios"
+				target="_self"
+				class="flex text-nowrap text-center items-center">
+				Lista de Precios
+				</a>		
+				</Badge>
+				
+			</h1>
+			<h2 class="text-md text-justify mx-4">
+
+				Acá vas a encontrar nuestra lista de precios actualizada para todos los servicios que ofrecemos. No dudes en contactarme si tenés alguna pregunta o necesitás más información.
+			</h2>
+		</section>
+</Layout>	
+ 

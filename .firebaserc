@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "barbershop-leman",
+    "barbershopleman": "barbershop-leman"
+  },
+  "targets": {},
+  "etags": {}
+}

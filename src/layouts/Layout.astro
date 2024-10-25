@@ -1,0 +1,51 @@
+---
+import '@fontsource-variable/onest'; 
+import Header from '../layouts/Header.astro';
+import Footer from '../layouts/footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+import Background from '../components/background.astro';
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" 
+		content="Barbería estilo argentino! Cortes de cabello modernos, ¡Disfruta de una experiencia única con un barbero experto que cuida cada detalle" />
+		<meta property="og:image:secure_url" content="background-image.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="barbero.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<ViewTransitions />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Background/>
+		<Header/>
+		<slot/>
+		<Footer/>
+	</body>
+
+</html>
+
+<style is:global>
+	:root {
+		scroolbar-gutter: auto;
+		overflow-y: scroll;
+	}
+	html {
+		transition-duration: 300ms;
+		font-family: 'Onest Variable', system-ui, sans-serif;
+	}
+	nav a {
+		transition-duration: 300ms;
+	}
+	button {
+		transition-duration: 300ms;
+	}
+</style>
