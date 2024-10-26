@@ -3,13 +3,14 @@ dist/
 
 # dependencies
 node_modules/
-lib/
+src/lib/firestoreConfig.ts
+srt/lib/
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-firestoreConfig.js
+firestoreConfig.js*
 
 # environment variables
 .env
