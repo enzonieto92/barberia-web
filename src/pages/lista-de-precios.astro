@@ -1,25 +1,49 @@
 ---
 import Layout from "../layouts/Layout.astro"
 
+// Importa Firestore y las funciones necesarias
+import firestore from '../lib/firestoreConfig';
+import { collection, getDocs } from 'firebase/firestore';
 
+// Variable para almacenar los servicios
+let servicios: { id: string; servicio: string; precio: number }[] = [];
+
+// Función para obtener los datos de la colección Servicios
+async function obtenerServicios() {
+  try {
+    const querySnapshot = await getDocs(collection(firestore, 'servicios'));
+    servicios = querySnapshot.docs.map(doc => {
+      const data = doc.data() as { servicio: string; precio: number };
+      return {
+        id: doc.id,
+        ...data
+      }
+    });
+  } catch (error) {
+    console.error('Error al obtener los servicios:', error);
+  }
+}
+
+// Llama a la función para obtener los datos al cargar el componente
+await obtenerServicios();
 ---
 
-<Layout title="Lista de Precios">
-    <div class="container mx-auto px-4 sm:px-6">
+
+<Layout title="Barbershop Leman - Lista de Precios">
+    <div class="container mx-auto py-6 px-4 sm:px-6">
         <div class="w-full max-w-md mx-auto text-center  bg-gradient-to-t from-transparent to-yellow-300  border-black border-x-2 border-y-2 p-4 sm:p-6 rounded-2xl shadow-md">
 
-            <h1 class="font-bold text-2xl">Lista de Precios</h1>
-            <div class="text-xl text-center flex-col justify-between py-3">
-                <ul>
-                    <li class="py-3 text-sm">Corte de cabello</li>
-                    <li class="py-3 text-sm">$6500</li>
-                    <li class="py-3 text-sm">Recorte de barba</li>
-                    <li class="py-3 text-sm">$3000</li>
-                    <li class="py-3 text-sm">Perfilados de cejas</li>
-                    <li class="py-3 text-sm">$1500</li>
-                    <li class="py-3 text-sm">Diseños Únicos</li>
-                    <li class="py-3 text-sm">$1500</li>
-                </ul>
+            <h1 class="font-bold text-3xl py-4">Lista de Precios</h1>
+            <div class="text-md text-center flex-col justify-between py-3">
+                    <ul class="space-y-2">
+                      {servicios.map(servicio => (
+                        <li class="mx-auto pb-2">
+                          {console.log("servicio", servicio)}
+                          <span>{servicio.servicio}</span>
+                          <span>${servicio.precio}</span>
+                        </li>
+                      ))}
+                    </ul>
         </div>
     </div>
 </Layout>

@@ -39,8 +39,9 @@ const services = [
     checkbox.addEventListener('change', () => {
       let total = 0;
       checkboxes.forEach(cbox => {
-        if (cbox.checked) {
-          total += parseFloat(cbox.value); // Sumamos los valores de los checkboxes seleccionados
+        const inputElement = cbox as HTMLInputElement;
+        if (inputElement.checked) {
+          total += parseFloat(inputElement.value); // Sumamos los valores de los checkboxes seleccionados
         }
       });
       totalElement.textContent = total.toFixed(2); // Actualizamos el total en el DOM
