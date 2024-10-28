@@ -3,7 +3,7 @@ import ListaServicios from "../components/ListaServicios.astro";
 const hours = Array.from({ length: 9 }, (_, i) => i + 9); // 9 AM to 5 PM
 ---
 
-<form class="w-full max-w-md mx-auto bg-gradient-to-t to-yellow-300 from-transparent border-black border-x-2 border-y-2 p-4 sm:p-6 rounded-lg shadow-md">
+<form class="w-full max-w-md mx-auto bg-gradient-to-t from-transparent to-yellow-300  border-black border-x-2 border-y-2 p-4 mb-24 sm:p-6 rounded-lg shadow-md">
   
   <div class="mb-4">
     <label for="name" class="block text-sm sm:text-base font-medium mb-2">Nombre completo</label>
@@ -31,7 +31,7 @@ const hours = Array.from({ length: 9 }, (_, i) => i + 9); // 9 AM to 5 PM
       name="date"
       required
       min={new Date().toISOString().split('T')[0]}
-      class="w-full px-3  py-2 text-base border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-datetime-edit-day-field]:p-1 [&::-webkit-datetime-edit-day-field]:rounded-full  [&::-webkit-datetime-edit-month-field]:p-1 [&::-webkit-datetime-edit-month-field]:rounded-full  [&::-webkit-datetime-edit-year-field]:p-1 [&::-webkit-datetime-edit-year-field]:rounded-full  hover:[&::-webkit-datetime-edit-fields-wrapper]:text-blue-600"
+      class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
   </div>
 
@@ -63,7 +63,7 @@ const hours = Array.from({ length: 9 }, (_, i) => i + 9); // 9 AM to 5 PM
   <button
     id="submit-form"
     type="submit"
-    class="w-full bg-blue-400  py-3 px-4 rounded-md hover:bg-blue-700  text-base sm:text-lg font-medium"
+    class="w-full bg-yellow-300  py-3 px-4 rounded-md hover:bg-yellow-400  text-base sm:text-lg font-medium"
   >
     Agendar Turno
   </button>
