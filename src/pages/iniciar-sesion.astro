@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Barbershop Leman - Iniciar Sesión">
+    <h1 class="text-3xl sm:text-2xl font-bold text-center  mb-6 sm:mb-8 px-4">Iniciar Sesión (en desarrollo)</h1>
+    <div class="flex container items-center mx-auto px-4 sm:px-6">
+    <form class=" flex-col items-center max-w-md mx-auto backdrop-blur-sm bg-gradient-to-t from-transparent to-yellow-300  border-black border-x-2 border-y-2 p-4 mb-4 sm:p-6 rounded-lg shadow-md">
+      <label for="email" class="text-sm font-semibold mx-auto">Email</label>
+      <input type="email" id="email" name="email" class="flex border border-gray-300 rounded-md" />
+      <label for="password" class="text-sm font-semibold">Contraseña</label>
+      <input type="password" id="password" name="password" class="flex border border-gray-300 rounded-md" />
+      <button type="submit" class="flex bg-yellow-300 w-40 justify-center mx-auto py-3 my-5 text-white p-2 rounded-md">Iniciar Sesión</button>
+    </form>
+</div>
+
+</Layout>

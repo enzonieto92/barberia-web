@@ -1,17 +1,38 @@
 
-<header class="sticky w-full flex-row h-auto bg-opacity-20 justify-end backdrop-blur-sm top-0 mx-auto py-4 z-50">
-  <nav class="flex mx-auto gap-x-4 justify-center">
-    <a class="text-sm font-bold" href="/">Inicio</a>
-    <a class="text-sm font-bold" href="/servicios">Servicios</a>
-    </nav>
+<header class="sticky w-full h-auto bg-opacity-20 backdrop-blur-md lg:backdrop-blur-none top-0 py-4 px-4 z-50">
+  
+  <nav class="flex justify-between items-center gap-x-4">
+    <div class="flex items-start gap-x-2">
+      <button onclick= "window.open('https://wa.link/u378rh', '_blank')">
+        <img src="whatsapp.png" alt="social media icons" class="w-8 aspect-square" />
+      </button>
+      
+      <button  onclick= "window.open('https://www.facebook.com/enzonieto92/', '_blank')">
+        <img src="facebook.png" alt="social media icons" class="w-8 aspect-square" />
+      </button>
+      
+      <button onclick= "window.open('https://www.instagram.com/barbershopleman/', '_blank')">
+        <img src="instagram.png" alt="social media icons" class="w-8 aspect-square" />
+      </button>
+    </div>
+    <div class ="flex text-nowrap items-end ml-auto gap-2">
+      <a class="text-md font-bold" href="/">Inicio</a>
+      <a class="text-md font-bold" href="/iniciar-sesion">Iniciar Sesión</a>
+    </div>
+  </nav>
+  
 
 </header>
-  
 
   
 <style>
-    nav a:hover {
-        transform:scale(1.1);
+   a:hover {
+        transform-: scale(1.2);
         text-shadow: rgb(217, 255, 47) 0px 0px 20px;
         opacity: 100;
+    }
+
+    button:hover{
+        box-shadow: rgb(217, 255, 0) 0px 0px 10px;
+        transform: scale(1.1);
     }
