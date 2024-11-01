@@ -1,6 +1,8 @@
 ---
-import ListaServicios from "../components/ListaServicios.astro";
+import { obtenerServicios } from '../lib/traer_lista';
+
 const hours = Array.from({ length: 9 }, (_, i) => i + 9); // 9 AM to 5 PM
+const servicios = await obtenerServicios();
 ---
 
 <form class="w-full max-w-md mx-auto bg-gradient-to-t from-transparent to-yellow-300  border-black border-x-2 border-y-2 p-4 mb-24 sm:p-6 rounded-lg shadow-md">
@@ -18,8 +20,18 @@ const hours = Array.from({ length: 9 }, (_, i) => i + 9); // 9 AM to 5 PM
   
   <div class="mb-4 ">
     <label class="block text-sm sm:text-base font-medium mb-2">Servicio</label>
-    <div class="p-3 border  rounded-md">
-      <ListaServicios />
+    <div class="items-center rounded-md">
+     {servicios.map(servicio => (
+        <label class="flex items-center text-sm">
+          <input
+            type="checkbox"
+            name="service"
+            required
+            class="mx-2 size-3"
+          />
+          <span>{servicio.servicio}: $</span>
+          <span>{servicio.precio}</span>
+          </label>))}
     </div>
   </div>
 

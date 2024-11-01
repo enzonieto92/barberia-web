@@ -1,31 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro"
 
-// Importa Firestore y las funciones necesarias
-import firestore from '../lib/firestoreConfig';
-import { collection, getDocs } from 'firebase/firestore';
-
-// Variable para almacenar los servicios
-let servicios: { id: string; servicio: string; precio: number }[] = [];
-
-// Función para obtener los datos de la colección Servicios
-async function obtenerServicios() {
-  try {
-    const querySnapshot = await getDocs(collection(firestore, 'servicios'));
-    servicios = querySnapshot.docs.map(doc => {
-      const data = doc.data() as { servicio: string; precio: number };
-      return {
-        id: doc.id,
-        ...data
-      }
-    });
-  } catch (error) {
-    console.error('Error al obtener los servicios:', error);
-  }
-}
-
-// Llama a la función para obtener los datos al cargar el componente
-await obtenerServicios();
+import { obtenerServicios } from '../lib/traer_lista';
+const servicios = await obtenerServicios();
 ---
 
 
@@ -36,9 +13,9 @@ await obtenerServicios();
             <h1 class="font-bold text-3xl py-4">Lista de Precios</h1>
             <div class="text-md text-center flex-col justify-between py-3">
                     <ul class="space-y-2">
-                      {servicios.map(servicio => (
+                      {servicios.map((servicio, index) => (
                         <li class="mx-auto pb-2">
-                          {console.log("servicio", servicio)}
+                          {console.log("servicio " + index + ":", servicio)}
                           <span>{servicio.servicio}</span>
                           <span>${servicio.precio}</span>
                         </li>
