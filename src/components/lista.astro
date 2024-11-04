@@ -1,0 +1,24 @@
+                <div id="service-list"></div>
+                    <script>
+                      import { collection, onSnapshot } from "firebase/firestore";
+                      import db from "../lib/firestoreConfig";
+                      
+                      const serviceList = document.getElementById("service-list");
+                      // Escucha los cambios en Firestore en tiempo real
+                      const unsubscribe = onSnapshot(collection(db, 'servicios'), (snapshot) => {
+                      if (serviceList) {
+                          serviceList.innerHTML = "";
+                          snapshot.forEach(doc => {
+                              
+                              const service = doc.data();
+                              const li = document.createElement("li");
+                              li.textContent = `${service.servicio}: $${service.precio}`;
+                              serviceList.appendChild(li);
+                          });
+                      } else {
+                          console.warn("serviceList no está definido en el DOM.");
+                      }
+                      });
+                      </script>
+                      
+                      
