@@ -20,3 +20,4 @@ export async function obtenerServicios() {
     return [];
   }
 }
+export { serviciosCache };

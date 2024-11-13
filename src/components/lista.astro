@@ -1,24 +1,27 @@
-                <div id="service-list"></div>
-                    <script>
-                      import { collection, onSnapshot } from "firebase/firestore";
-                      import db from "../lib/firestoreConfig";
-                      
-                      const serviceList = document.getElementById("service-list");
-                      // Escucha los cambios en Firestore en tiempo real
-                      const unsubscribe = onSnapshot(collection(db, 'servicios'), (snapshot) => {
-                      if (serviceList) {
-                          serviceList.innerHTML = "";
-                          snapshot.forEach(doc => {
-                              
-                              const service = doc.data();
-                              const li = document.createElement("li");
-                              li.textContent = `${service.servicio}: $${service.precio}`;
-                              serviceList.appendChild(li);
-                          });
-                      } else {
-                          console.warn("serviceList no está definido en el DOM.");
-                      }
-                      });
-                      </script>
-                      
-                      
+---
+import { collection, getDocs } from "firebase/firestore";
+import db from "../lib/firestoreConfig";
+
+let servicios = [] as any[];
+
+// Carga los datos en el servidor
+try {
+  const snapshot = await getDocs(collection(db, "servicios"));
+  servicios = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+} catch (error) {
+  console.error("Error al obtener los datos de Firestore:", error);
+}
+---
+
+<div id="service-list" class="flex text-nowrap  text-justify 5 mx-auto justify-center py-2">
+  <ul>
+    {servicios.map(service => (
+      <li class="text-slate-800 text-justify py-2" id={service.id}>
+        <div class="flex justify-between px-8 bg-gradient-to-t shadow-sm drop-shadow-md shadow-black from-blue-300 to-transparent cursor-default transition-transform hover:scale-105 gap-x-28">
+          <span>{service.servicio}:</span>
+          <span>${service.precio}</span>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>

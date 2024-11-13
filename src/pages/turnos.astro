@@ -1,0 +1,24 @@
+---
+import { Timestamp } from "firebase/firestore";
+import Layout from "../layouts/Layout.astro"
+import { ObtenerTurnos } from "../lib/traer_turnos"
+
+
+const turno = await ObtenerTurnos();
+---
+<Layout title="Turnos en db">
+    <div class="flex flex-col justify-center mx-auto">
+                <h1 class="text-xl font-bold mb-8 mx-auto">
+                    Turnos agendados:
+                </h1>
+        <div class="w-80 h-80 mx-auto border-2 rounded-lg  bg-gradient-to-b from-yellow-300 to-transparent border-black">
+            <ul class="text-md text-center flex-col justify-between py-3">
+                {turno.map((turno) => (
+                    <li class="text-left text-slate-800 py-2 flex text-nowrap" id={turno.id}>
+                        {turno.nombre} - {turno.fecha_y_hora.toDate().toLocaleDateString()} - {turno.servicios.join(", ")}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</Layout>

@@ -8,8 +8,6 @@ let turnoscache: { id: string; descripcion: string; fecha_y_hora: Timestamp;  no
 
 // Función para obtener los datos de Firestore
 export async function ObtenerTurnos() {
-
-
   try {
     const querySnapshot = await getDocs(collection(firestore, 'turnos'));
     turnoscache = querySnapshot.docs.map((doc) => {
@@ -18,9 +16,8 @@ export async function ObtenerTurnos() {
       return { id: doc.id, ...restData };
     });
     return turnoscache;
-  } 
-  catch (error) {
+  } catch (error) {
     console.error('Error al obtener los turnos:', error);
-    return [];
+    return [];  // Retorna un array vacío en caso de error
   }
 }

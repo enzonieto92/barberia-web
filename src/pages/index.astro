@@ -2,17 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Badge from '../components/Badge.astro';
 import { ObtenerTurnos } from '../lib/traer_turnos';
+import GridFotos from '../components/grid-fotos.astro';
 const turnos = await ObtenerTurnos();
 ---
 
 
 <Layout title="Barbershop Leman - Inicio">
-		<section class="flex-row mx-auto items-center max-w-xl drop-shadow-xl lg:w-screen z-0 sm:w-screen pt-3 ">
+	<div class="overflow-hidden absolute h-[500px] w-screen bg-fixed bg-[url(bg-index.jpg)] bg-no-repeat bg-cover opacity-20 bg-bottom">
+	</div>
+		<section class="flex-row max-w-md container mt-32 mb-52 align-text-bottom rounded-3xl shadow-lg backdrop-blur-lg  max-h-52 mx-auto items-center drop-shadow-xl z-0 sm:w-screen">
 			<h1 
-			class ="flex items-center mx-4 text-left justify-center font-bold">
-			<div class="text-2xl">
+			class ="flex text-2xl items-center mx-4 text-left justify-center font-bold">
 				Barbershop Leman  
-			</div>
+
 				<Badge>
 					<a href="/agendar-turno"
 					target="_self"
@@ -22,12 +24,27 @@ const turnos = await ObtenerTurnos();
 				</Badge>
 				
 			</h1>
-			<p class="text-md text-justify mx-4 ">
-
+			<p class="flex flex-col justify-center px-4 text-justify text-md max-w-screen-md mx-auto">
 				Un lugar dedicado al cuidado personal y al estilo, donde cada detalle está pensado para que brindarte atención personalizada y de primera calidad!
 			</p>
 		</section>
-		<section class="mx-auto items-center max-w-xl drop-shadow-xl lg:w-screen sm:w-screen pt-10">
+		<section>
+			<div class="max-w-md rounded items-center mx-auto overflow-hidden p-4 shadow-lg">
+				<img class="w-full" src="IMG-20241112-WA0010.jpg" alt="Sunset in the mountains">
+				<div class="px-6 py-4">
+					<div class="font-bold text-xl mb-2">Nuestro Trabajo</div>
+					<p class="text-gray-700 text-base">
+						Un buen corte no solo cambia tu look, cambia tu actitud. ¡Ven a vivir la experiencia de estilo único en nuestra barbería!
+					</p>
+				</div>
+				<div class="px-6 pt-4 pb-2">
+					<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#barbershop</span>
+					<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#fade</span>
+					<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#estilo</span>
+				</div>
+			</div>
+		</section>
+		<section class="mx-auto items-center py-28 max-w-xl drop-shadow-xl lg:w-screen sm:w-screen pt-10">
 			<h1 
 			class ="flex items-center mx-4 text-left justify-center font-bold">
 			<div class="text-2xl">
@@ -47,8 +64,25 @@ const turnos = await ObtenerTurnos();
 				Acá vas a encontrar nuestra lista de precios actualizada para todos los servicios que ofrecemos. No dudes en contactarme si tenés alguna pregunta o necesitás más información.
 			</h2>
 		</section>
+		<section class="flex mx-auto items-center max-w-xl drop-shadow-xl lg:w-screen sm:w-screen pt-10">
+				<GridFotos/>
+		</section>
+		<section class="flex flex-col m-10 p-2 rounded-md mx-auto justify-center items-center max-w-xl drop-shadow-xl mb-48 lg:w-screen sm:w-screen pt-10">
+			<span class="font-bold mb-10">
+				Donde podes encontrarnos:
+			</span>
+			<div class="hover:scale-105 transition-transform  border-2 border-blue-300  shadow-md">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3100.9328024319025!2d-64.08954142405855!3d-38.994029971703526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzjCsDU5JzM4LjUiUyA2NMKwMDUnMTMuMSJX!5e0!3m2!1ses!2sar!4v1731371891877!5m2!1ses!2sar"  class="justify-center flex w-full" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+				<p class="flex items-center pointer-events-none text-[12px] font-bold p-2">
+					<img src="location-pin-svgrepo-com.svg" alt="icon-location" class="flex flex-row w-6 h-6 p-1 "/>
+					Calle Laprida N° 354, Río Colorado, Río Negro
+				</p>
+			</div>
 
-		<!--div>
+			</section>
+
+			<!--div>
 			<h1 class="text-2xl font-bold text-center">Turnos</h1>
 			{
 				turnos.map ( turno => {
